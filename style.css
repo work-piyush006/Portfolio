@@ -307,3 +307,56 @@ footer {
   opacity: 1 !important;
   transform: translateY(0) !important;
 }
+/* ================= HERO EXTRA ================= */
+
+.hero-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 20px 0 30px 0;
+  font-size: 14px;
+  color: #334155;
+}
+
+.secondary-btn {
+  margin-left: 15px;
+  background: transparent;
+  color: #2563EB;
+  border: 2px solid #2563EB;
+  padding: 12px 26px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.secondary-btn:hover {
+  background: #2563EB;
+  color: white;
+}
+
+/* ================= STATS ================= */
+
+.stats-section {
+  background: #0F172A;
+  padding: 80px 0;
+  color: white;
+}
+
+.stats-grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 40px;
+  text-align: center;
+}
+
+.stat-card h2 {
+  font-size: 48px;
+  color: #60A5FA;
+}
+
+.stat-card p {
+  margin-top: 10px;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
