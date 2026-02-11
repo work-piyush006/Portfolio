@@ -1,5 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  // ===== PAGE FADE-IN =====
+  document.body.classList.add("page-loaded");
+
+  // ===== SMOOTH PAGE TRANSITION (FADE OUT BEFORE NAVIGATION) =====
+  document.querySelectorAll("a").forEach(link => {
+    const href = link.getAttribute("href");
+
+    if (href && !href.startsWith("#") && !href.startsWith("http") && !link.hasAttribute("download")) {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.body.classList.remove("page-loaded");
+
+        setTimeout(() => {
+          window.location.href = href;
+        }, 300);
+      });
+    }
+  });
+
   // ===== HAMBURGER =====
   const menuToggle = document.getElementById("menu-toggle");
   const navLinks = document.getElementById("nav-links");
@@ -50,7 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (certImage) {
 
-    // Preload images
     certificates.forEach(src => {
       const img = new Image();
       img.src = src;
@@ -59,7 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(() => {
       currentIndex = (currentIndex + 1) % certificates.length;
 
-      certImage.style.transition = "opacity 0.4s ease";
       certImage.style.opacity = 0;
 
       setTimeout(() => {
@@ -67,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
         certImage.style.opacity = 1;
       }, 400);
 
-    }, 3000); // slightly slower = more premium feel
+    }, 3000);
   }
 
   // ===== MODAL =====
@@ -102,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ===== PREMIUM COUNTER ANIMATION =====
+  // ===== PREMIUM COUNTER =====
   const counters = document.querySelectorAll(".counter");
 
   const counterObserver = new IntersectionObserver((entries, observer) => {
@@ -113,9 +130,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const counter = entry.target;
         const target = +counter.getAttribute("data-target");
         let current = 0;
-        const duration = 1200; // animation time
-        const stepTime = 16;
-        const increment = target / (duration / stepTime);
+        const duration = 1200;
+        const increment = target / (duration / 16);
 
         const updateCounter = () => {
           current += increment;
@@ -124,7 +140,6 @@ document.addEventListener("DOMContentLoaded", () => {
             counter.innerText = Math.floor(current);
             requestAnimationFrame(updateCounter);
           } else {
-            // Add suffix based on value
             if (target === 40) {
               counter.innerText = target + "%";
             } else {
