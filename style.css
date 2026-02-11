@@ -1,4 +1,4 @@
-/* ================= RESET ================= */
+/* ================= GLOBAL RESET ================= */
 * {
   margin: 0;
   padding: 0;
@@ -7,18 +7,19 @@
 
 html, body {
   height: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
   display: flex;
   flex-direction: column;
-  font-family: 'Segoe UI', sans-serif;
-  background: #F1F5F9;
+  font-family: 'Inter', sans-serif;
+  background: #F8FAFC;
   color: #0F172A;
   line-height: 1.7;
 }
 
-/* Page grows, footer pushed down */
+/* Page stretch for sticky footer */
 main {
   flex: 1;
 }
@@ -26,15 +27,18 @@ main {
 /* ================= CONTAINER ================= */
 .container {
   width: 92%;
-  max-width: 1100px;
+  max-width: 1150px;
   margin: auto;
 }
 
 /* ================= HEADER ================= */
 header {
-  background: #0F172A;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(8px);
   padding: 18px 0;
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
 
 .nav {
@@ -43,28 +47,49 @@ header {
   align-items: center;
 }
 
-.nav h2 {
+.logo {
   color: white;
-  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 .nav ul {
   list-style: none;
   display: flex;
-  gap: 25px;
+  gap: 28px;
 }
 
 .nav a {
   color: white;
   text-decoration: none;
   font-size: 14px;
-  transition: 0.3s;
+  position: relative;
+  transition: 0.3s ease;
 }
 
+/* Active Link */
+.nav a.active,
 .nav a:hover {
   color: #60A5FA;
 }
 
+.nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -4px;
+  background: #60A5FA;
+  transition: 0.3s ease;
+}
+
+.nav a:hover::after,
+.nav a.active::after {
+  width: 100%;
+}
+
+/* Hamburger */
 .menu-toggle {
   display: none;
   font-size: 26px;
@@ -74,121 +99,136 @@ header {
 
 /* ================= HERO ================= */
 .hero {
-  padding: 100px 0;
-  background: white;
+  padding: 120px 0;
+  background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
 }
 
 .hero-flex {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 60px;
+  gap: 80px;
   flex-wrap: wrap;
 }
 
-.hero h1 {
-  font-size: 42px;
-  margin-bottom: 12px;
+.hero-content h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 16px;
 }
 
-.hero h3 {
+.hero-content h3 {
   color: #2563EB;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
+  font-weight: 500;
 }
 
-.hero p {
-  max-width: 520px;
-  margin-bottom: 25px;
+.hero-content p {
+  max-width: 540px;
+  margin-bottom: 30px;
+  color: #475569;
 }
 
-.hero img {
-  width: 300px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+/* Button */
+.primary-btn {
+  display: inline-block;
+  background: #2563EB;
+  color: white;
+  padding: 14px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.primary-btn:hover {
+  background: #1E40AF;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+}
+
+/* Hero Image */
+.hero-image img {
+  width: 320px;
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+  transition: 0.4s ease;
+}
+
+.hero-image img:hover {
+  transform: translateY(-8px);
 }
 
 /* ================= SECTIONS ================= */
 .page-section {
-  padding: 80px 0;
+  padding: 100px 0;
 }
 
 .page-section h1,
 .page-section h2 {
-  font-size: 34px;
-  margin-bottom: 35px;
+  font-size: 38px;
+  margin-bottom: 40px;
 }
 
 /* ================= CARDS ================= */
 .card {
   background: white;
-  padding: 28px;
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-  margin-bottom: 25px;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
+  transition: 0.3s ease;
 }
 
-/* ================= CERTIFICATE SLIDER ================= */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
 
+/* ================= CERTIFICATE ================= */
 .certificate-slider {
-  width: 360px;
+  width: 400px;
   max-width: 100%;
-  margin: 40px auto;
+  margin: 50px auto;
   text-align: center;
 }
 
 .certificate-slider img {
   width: 100%;
-  border-radius: 12px;
+  border-radius: 16px;
   cursor: pointer;
   transition: 0.4s ease;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.15);
 }
 
 .certificate-slider img:hover {
   transform: scale(1.05);
 }
 
-/* ================= MODAL ================= */
-
+/* Modal */
 .certificate-modal {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.85);
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 2000;
 }
 
 .certificate-modal img {
   max-width: 90%;
   max-height: 90%;
-  border-radius: 12px;
+  border-radius: 16px;
 }
 
 .close-modal {
   position: absolute;
   top: 30px;
   right: 40px;
-  font-size: 35px;
+  font-size: 40px;
   color: white;
   cursor: pointer;
-}
-
-/* Smooth Sliding Animation */
-@keyframes slideCertificates {
-
-  0%   { transform: translateX(0%); }
-  30%  { transform: translateX(0%); }
-
-  33%  { transform: translateX(-100%); }
-  63%  { transform: translateX(-100%); }
-
-  66%  { transform: translateX(-200%); }
-  96%  { transform: translateX(-200%); }
-
-  100% { transform: translateX(0%); }
-
 }
 
 /* ================= FOOTER ================= */
@@ -196,7 +236,8 @@ footer {
   background: #0F172A;
   color: white;
   text-align: center;
-  padding: 22px;
+  padding: 28px;
+  font-size: 14px;
 }
 
 /* ================= RESPONSIVE ================= */
@@ -207,7 +248,7 @@ footer {
     text-align: center;
   }
 
-  .hero p {
+  .hero-content p {
     margin: auto;
   }
 }
@@ -224,11 +265,11 @@ footer {
     right: 0;
     background: #0F172A;
     flex-direction: column;
-    width: 200px;
-    padding: 20px;
-    gap: 15px;
+    width: 220px;
+    padding: 25px;
+    gap: 18px;
     display: none;
-    border-radius: 8px 0 0 8px;
+    border-radius: 12px 0 0 12px;
   }
 
   .nav ul.active {
@@ -236,10 +277,14 @@ footer {
   }
 
   .hero {
-    padding: 60px 0;
+    padding: 80px 0;
   }
 
-  .hero h1 {
-    font-size: 28px;
+  .hero-content h1 {
+    font-size: 30px;
+  }
+
+  .page-section {
+    padding: 70px 0;
   }
 }
