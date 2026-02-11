@@ -5,11 +5,15 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
       - name: Deploy to GitHub Pages
