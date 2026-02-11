@@ -288,3 +288,19 @@ footer {
     padding: 70px 0;
   }
 }
+/* ================= SCROLL REVEAL ANIMATION ================= */
+
+.hero-content,
+.hero-image,
+.card,
+.page-section h1,
+.page-section h2 {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.show {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
