@@ -1,7 +1,6 @@
-// ================= SAFE DOM READY =================
 document.addEventListener("DOMContentLoaded", () => {
 
-  // ================= HAMBURGER =================
+  // ===== HAMBURGER =====
   const menuToggle = document.getElementById("menu-toggle");
   const navLinks = document.getElementById("nav-links");
 
@@ -11,27 +10,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ================= AUTO ACTIVE NAV =================
+  // ===== AUTO ACTIVE NAV =====
   let currentPage = window.location.pathname.split("/").pop();
-
   if (currentPage === "" || currentPage === "/") {
     currentPage = "index.html";
   }
 
-  const navItems = document.querySelectorAll("#nav-links a");
-
-  navItems.forEach(link => {
+  document.querySelectorAll("#nav-links a").forEach(link => {
     if (link.getAttribute("href") === currentPage) {
       link.classList.add("active");
     }
   });
 
-  // ================= SCROLL REVEAL (INTERSECTION OBSERVER) =================
+  // ===== SCROLL REVEAL =====
   const revealElements = document.querySelectorAll(
     ".hero-content, .hero-image, .card, .page-section h1, .page-section h2, .stat-card"
   );
 
-  const observer = new IntersectionObserver((entries, observer) => {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("show");
@@ -40,17 +36,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }, { threshold: 0.15 });
 
-  revealElements.forEach(el => observer.observe(el));
+  revealElements.forEach(el => revealObserver.observe(el));
 
-  // ================= CERTIFICATE AUTO SLIDER =================
+  // ===== CERTIFICATE SLIDER =====
   const certificates = [
     "certificate(1).jpg",
     "certificate(2).jpg",
     "certificate(3).jpg"
   ];
 
-  let currentIndex = 0;
   const certImage = document.getElementById("certificateImage");
+  let currentIndex = 0;
 
   if (certImage) {
 
@@ -63,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(() => {
       currentIndex = (currentIndex + 1) % certificates.length;
 
+      certImage.style.transition = "opacity 0.4s ease";
       certImage.style.opacity = 0;
 
       setTimeout(() => {
@@ -70,10 +67,10 @@ document.addEventListener("DOMContentLoaded", () => {
         certImage.style.opacity = 1;
       }, 400);
 
-    }, 2500);
+    }, 3000); // slightly slower = more premium feel
   }
 
-  // ================= MODAL PREVIEW =================
+  // ===== MODAL =====
   const modal = document.getElementById("certificateModal");
   const modalImage = document.getElementById("modalImage");
   const closeModal = document.getElementById("closeModal");
@@ -105,37 +102,44 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ================= COUNTER ANIMATION (RUN ONCE) =================
+  // ===== PREMIUM COUNTER ANIMATION =====
   const counters = document.querySelectorAll(".counter");
 
-  if (counters.length > 0) {
+  const counterObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
 
-    const counterObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
+      if (entry.isIntersecting) {
 
-          const counter = entry.target;
-          const target = +counter.getAttribute("data-target");
-          const increment = target / 80;
+        const counter = entry.target;
+        const target = +counter.getAttribute("data-target");
+        let current = 0;
+        const duration = 1200; // animation time
+        const stepTime = 16;
+        const increment = target / (duration / stepTime);
 
-          const updateCounter = () => {
-            const current = +counter.innerText;
+        const updateCounter = () => {
+          current += increment;
 
-            if (current < target) {
-              counter.innerText = Math.ceil(current + increment);
-              setTimeout(updateCounter, 20);
+          if (current < target) {
+            counter.innerText = Math.floor(current);
+            requestAnimationFrame(updateCounter);
+          } else {
+            // Add suffix based on value
+            if (target === 40) {
+              counter.innerText = target + "%";
             } else {
-              counter.innerText = target;
+              counter.innerText = target + "+";
             }
-          };
+          }
+        };
 
-          updateCounter();
-          observer.unobserve(counter); // run once only
-        }
-      });
-    }, { threshold: 0.6 });
+        updateCounter();
+        observer.unobserve(counter);
+      }
 
-    counters.forEach(counter => counterObserver.observe(counter));
-  }
+    });
+  }, { threshold: 0.6 });
+
+  counters.forEach(counter => counterObserver.observe(counter));
 
 });
