@@ -127,24 +127,42 @@ header {
   margin-bottom: 25px;
 }
 
-/* ================= CERTIFICATE GRID ================= */
-.certificate-grid {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
+/* ================= CERTIFICATE SLIDER ================= */
 
-.certificate-grid img {
-  width: 320px;
+.certificate-slider {
+  width: 340px;
   max-width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-  transition: 0.3s;
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 12px;
 }
 
-.certificate-grid img:hover {
-  transform: scale(1.05);
+.slides {
+  display: flex;
+  width: 300%;
+  animation: slideCertificates 4.5s infinite ease-in-out;
+}
+
+.slides img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+/* Smooth Sliding Animation */
+@keyframes slideCertificates {
+
+  0%   { transform: translateX(0%); }
+  30%  { transform: translateX(0%); }
+
+  33%  { transform: translateX(-100%); }
+  63%  { transform: translateX(-100%); }
+
+  66%  { transform: translateX(-200%); }
+  96%  { transform: translateX(-200%); }
+
+  100% { transform: translateX(0%); }
+
 }
 
 /* ================= FOOTER ================= */
