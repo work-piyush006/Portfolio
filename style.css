@@ -130,23 +130,49 @@ header {
 /* ================= CERTIFICATE SLIDER ================= */
 
 .certificate-slider {
-  width: 340px;
+  width: 360px;
   max-width: 100%;
   margin: 40px auto;
-  overflow: hidden;
-  border-radius: 12px;
+  text-align: center;
 }
 
-.slides {
-  display: flex;
-  width: 300%;
-  animation: slideCertificates 4.5s infinite ease-in-out;
-}
-
-.slides img {
+.certificate-slider img {
   width: 100%;
   border-radius: 12px;
+  cursor: pointer;
+  transition: 0.4s ease;
   box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.certificate-slider img:hover {
+  transform: scale(1.05);
+}
+
+/* ================= MODAL ================= */
+
+.certificate-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.certificate-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+}
+
+.close-modal {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 35px;
+  color: white;
+  cursor: pointer;
 }
 
 /* Smooth Sliding Animation */
