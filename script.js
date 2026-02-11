@@ -11,10 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ================= AUTO ACTIVE NAV (EDGE CASE FIXED) =================
+  // ================= AUTO ACTIVE NAV =================
   let currentPage = window.location.pathname.split("/").pop();
 
-  // If homepage URL is just "/", treat as index.html
   if (currentPage === "" || currentPage === "/") {
     currentPage = "index.html";
   }
@@ -27,27 +26,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // ================= INTERSECTION OBSERVER (SCROLL REVEAL) =================
+  // ================= SCROLL REVEAL (INTERSECTION OBSERVER) =================
   const revealElements = document.querySelectorAll(
-    ".hero-content, .hero-image, .card, .page-section h1, .page-section h2"
+    ".hero-content, .hero-image, .card, .page-section h1, .page-section h2, .stat-card"
   );
-
-  const observerOptions = {
-    threshold: 0.15
-  };
 
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add("show");
-        observer.unobserve(entry.target); // Animate once only
+        observer.unobserve(entry.target);
       }
     });
-  }, observerOptions);
+  }, { threshold: 0.15 });
 
-  revealElements.forEach(el => {
-    observer.observe(el);
-  });
+  revealElements.forEach(el => observer.observe(el));
 
   // ================= CERTIFICATE AUTO SLIDER =================
   const certificates = [
@@ -61,19 +54,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (certImage) {
 
-    const preloadImages = () => {
-      certificates.forEach(src => {
-        const img = new Image();
-        img.src = src;
-      });
-    };
-
-    preloadImages();
+    // Preload images
+    certificates.forEach(src => {
+      const img = new Image();
+      img.src = src;
+    });
 
     setInterval(() => {
       currentIndex = (currentIndex + 1) % certificates.length;
 
-      certImage.style.transition = "opacity 0.4s ease";
       certImage.style.opacity = 0;
 
       setTimeout(() => {
@@ -110,11 +99,43 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ESC key close
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && modal && modal.style.display === "flex") {
       modal.style.display = "none";
     }
   });
+
+  // ================= COUNTER ANIMATION (RUN ONCE) =================
+  const counters = document.querySelectorAll(".counter");
+
+  if (counters.length > 0) {
+
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+
+          const counter = entry.target;
+          const target = +counter.getAttribute("data-target");
+          const increment = target / 80;
+
+          const updateCounter = () => {
+            const current = +counter.innerText;
+
+            if (current < target) {
+              counter.innerText = Math.ceil(current + increment);
+              setTimeout(updateCounter, 20);
+            } else {
+              counter.innerText = target;
+            }
+          };
+
+          updateCounter();
+          observer.unobserve(counter); // run once only
+        }
+      });
+    }, { threshold: 0.6 });
+
+    counters.forEach(counter => counterObserver.observe(counter));
+  }
 
 });
