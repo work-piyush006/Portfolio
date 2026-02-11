@@ -1,4 +1,4 @@
-// Hamburger
+// ================= HAMBURGER =================
 const menuToggle = document.getElementById("menu-toggle");
 const navLinks = document.getElementById("nav-links");
 
@@ -7,6 +7,27 @@ if (menuToggle) {
     navLinks.classList.toggle("active");
   });
 }
+
+// ================= SCROLL REVEAL =================
+
+const revealElements = document.querySelectorAll(
+  ".hero-content, .hero-image, .card, .page-section h1, .page-section h2"
+);
+
+const revealOnScroll = () => {
+  const windowHeight = window.innerHeight;
+
+  revealElements.forEach(el => {
+    const elementTop = el.getBoundingClientRect().top;
+
+    if (elementTop < windowHeight - 80) {
+      el.classList.add("show");
+    }
+  });
+};
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
 
 // ================= CERTIFICATE AUTO SLIDER =================
 
@@ -27,9 +48,9 @@ if (certImage) {
     setTimeout(() => {
       certImage.src = certificates[currentIndex];
       certImage.style.opacity = 1;
-    }, 300);
+    }, 400);
 
-  }, 2000); // 2 seconds
+  }, 2000);
 }
 
 // ================= MODAL PREVIEW =================
