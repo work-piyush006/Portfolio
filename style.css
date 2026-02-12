@@ -645,24 +645,42 @@ body.page-loaded {
   transform: scale(1.2);
 }
 
-/* ================= DARK MODE VARIABLES ================= */
+
+/* ================= CLEAN DARK MODE ================= */
 
 body.dark {
   background: #0F172A;
   color: #E2E8F0;
 }
 
+/* Header */
 body.dark header {
   background: rgba(15, 23, 42, 0.95);
 }
 
-body.dark .card {
-  background: #1E293B;
-  border: 1px solid rgba(255,255,255,0.05);
+/* Navigation */
+body.dark .nav a {
+  color: #CBD5E1;
 }
 
+body.dark .nav a:hover,
+body.dark .nav a.active {
+  color: #60A5FA;
+}
+
+body.dark .nav a::after {
+  background: #60A5FA;
+}
+
+/* Hero */
 body.dark .hero {
   background: linear-gradient(135deg, #0F172A 0%, #1E293B 60%, #334155 100%);
+}
+
+body.dark .hero-content h1 {
+  background: linear-gradient(90deg, #E2E8F0, #60A5FA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 body.dark .hero-content p,
@@ -671,173 +689,18 @@ body.dark .contact-subtext {
   color: #CBD5E1;
 }
 
-body.dark .hero-highlights span {
-  background: #1E293B;
-  color: #E2E8F0;
-}
-
-body.dark footer {
-  background: #020617;
-}
-
-body.dark .stat-card {
-  background: rgba(255,255,255,0.05);
-}
-/* ================= DARK MODE COMPLETE POLISH ================= */
-
-body.dark .nav a {
-  color: #E2E8F0;
-}
-
-body.dark .nav a:hover,
-body.dark .nav a.active {
-  color: #60A5FA;
-}
-
-body.dark .nav a::after {
-  background: #60A5FA;
-}
-
-/* Buttons */
-body.dark .primary-btn {
-  background: #3B82F6;
-}
-
-body.dark .primary-btn:hover {
-  background: #2563EB;
-  box-shadow: 0 10px 25px rgba(59,130,246,0.4);
-}
-
-body.dark .secondary-btn {
-  color: #60A5FA;
-  border: 2px solid #334155;
-}
-
-body.dark .secondary-btn:hover {
-  background: #3B82F6;
-  color: white;
-}
-
-/* Contact Boxes */
+/* Cards */
+body.dark .card,
 body.dark .contact-box {
   background: #1E293B;
   border: 1px solid rgba(255,255,255,0.05);
 }
 
-body.dark .contact-box a {
-  color: #60A5FA;
-}
-
-/* Hero Image Glow */
-body.dark .hero-image img {
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 25px 60px rgba(59,130,246,0.15);
-}
-
-/* Card Shadow Correction */
 body.dark .card:hover {
-  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-}
-
-/* Stats Section refinement */
-body.dark .stats-section {
-  background: #020617;
-}
-
-/* Modal polish */
-body.dark .certificate-modal {
-  background: rgba(0,0,0,0.9);
-}
-/* ================= COMPLETE DARK MODE ENHANCEMENT ================= */
-
-/* Navigation */
-body.dark .nav a {
-  color: #E2E8F0;
-}
-
-body.dark .nav a:hover,
-body.dark .nav a.active {
-  color: #60A5FA;
-}
-
-body.dark .nav a::after {
-  background: #60A5FA;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
 }
 
 /* Buttons */
-body.dark .primary-btn {
-  background: #3B82F6;
-}
-
-body.dark .primary-btn:hover {
-  background: #2563EB;
-  box-shadow: 0 10px 25px rgba(59,130,246,0.4);
-}
-
-body.dark .secondary-btn {
-  color: #60A5FA;
-  border: 2px solid #334155;
-}
-
-body.dark .secondary-btn:hover {
-  background: #3B82F6;
-  color: #ffffff;
-}
-
-/* Contact Boxes */
-body.dark .contact-box {
-  background: #1E293B;
-  border: 1px solid rgba(255,255,255,0.05);
-}
-
-body.dark .contact-box a {
-  color: #60A5FA;
-}
-
-/* Hero Image */
-body.dark .hero-image img {
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 25px 60px rgba(59,130,246,0.15);
-}
-
-/* Cards hover depth */
-body.dark .card:hover {
-  box-shadow: 0 20px 45px rgba(0,0,0,0.6);
-}
-
-/* Stats Section */
-body.dark .stats-section {
-  background: #020617;
-}
-
-body.dark .stat-card {
-  background: rgba(255,255,255,0.06);
-}
-
-/* Modal */
-body.dark .certificate-modal {
-  background: rgba(0,0,0,0.9);
-}
-/* ===== COMPLETE DARK MODE FINISH ===== */
-
-/* Improve nav visibility */
-body.dark .nav a {
-  color: #CBD5E1;
-}
-
-body.dark .nav a:hover,
-body.dark .nav a.active {
-  color: #60A5FA;
-}
-
-/* Hero title gradient fix */
-body.dark .hero-content h1 {
-  background: linear-gradient(90deg, #E2E8F0, #60A5FA);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Buttons tuned for dark */
 body.dark .primary-btn {
   background: #3B82F6;
 }
@@ -857,13 +720,21 @@ body.dark .secondary-btn:hover {
   color: #fff;
 }
 
-/* Contact box dark depth */
-body.dark .contact-box {
-  background: #1E293B;
-  box-shadow: 0 15px 45px rgba(0,0,0,0.5);
+/* Stats */
+body.dark .stats-section {
+  background: #020617;
 }
 
-/* Card hover stronger in dark */
-body.dark .card:hover {
-  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+body.dark .stat-card {
+  background: rgba(255,255,255,0.06);
+}
+
+/* Modal */
+body.dark .certificate-modal {
+  background: rgba(0,0,0,0.9);
+}
+
+/* Footer */
+body.dark footer {
+  background: #020617;
 }
