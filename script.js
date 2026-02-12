@@ -7,23 +7,26 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===== DARK MODE SYSTEM =====
   const themeToggle = document.getElementById("theme-toggle");
 
+  const applyTheme = (mode) => {
+    if (mode === "dark") {
+      document.body.classList.add("dark");
+      if (themeToggle) themeToggle.textContent = "☀️";
+    } else {
+      document.body.classList.remove("dark");
+      if (themeToggle) themeToggle.textContent = "🌙";
+    }
+  };
+
   // Load saved theme
-  if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark");
-    if (themeToggle) themeToggle.textContent = "☀️";
-  }
+  const savedTheme = localStorage.getItem("theme") || "light";
+  applyTheme(savedTheme);
 
   if (themeToggle) {
     themeToggle.addEventListener("click", () => {
-      document.body.classList.toggle("dark");
-
-      if (document.body.classList.contains("dark")) {
-        localStorage.setItem("theme", "dark");
-        themeToggle.textContent = "☀️";
-      } else {
-        localStorage.setItem("theme", "light");
-        themeToggle.textContent = "🌙";
-      }
+      const isDark = document.body.classList.contains("dark");
+      const newTheme = isDark ? "light" : "dark";
+      localStorage.setItem("theme", newTheme);
+      applyTheme(newTheme);
     });
   }
 
@@ -164,10 +167,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const target = +counter.getAttribute("data-target");
         let current = 0;
         const duration = 1200;
-        const step = target / (duration / 16);
+        const increment = target / (duration / 16);
 
         const animate = () => {
-          current += step;
+          current += increment;
 
           if (current < target) {
             counter.innerText = Math.floor(current);
