@@ -3,18 +3,23 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===== PAGE FADE-IN =====
   document.body.classList.add("page-loaded");
 
-  // ===== SMOOTH PAGE TRANSITION (FADE OUT BEFORE NAVIGATION) =====
-  document.querySelectorAll("a").forEach(link => {
+  // ===== SAFE INTERNAL PAGE TRANSITION =====
+  document.querySelectorAll("a[href]").forEach(link => {
     const href = link.getAttribute("href");
 
-    if (href && !href.startsWith("#") && !href.startsWith("http") && !link.hasAttribute("download")) {
+    if (
+      href &&
+      href.endsWith(".html") &&
+      !link.hasAttribute("target") &&
+      !link.hasAttribute("download")
+    ) {
       link.addEventListener("click", function (e) {
         e.preventDefault();
         document.body.classList.remove("page-loaded");
 
         setTimeout(() => {
           window.location.href = href;
-        }, 300);
+        }, 250);
       });
     }
   });
@@ -30,10 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ===== AUTO ACTIVE NAV =====
-  let currentPage = window.location.pathname.split("/").pop();
-  if (currentPage === "" || currentPage === "/") {
-    currentPage = "index.html";
-  }
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
   document.querySelectorAll("#nav-links a").forEach(link => {
     if (link.getAttribute("href") === currentPage) {
@@ -58,14 +60,12 @@ document.addEventListener("DOMContentLoaded", () => {
   revealElements.forEach(el => revealObserver.observe(el));
 
   // ===== CERTIFICATE SLIDER =====
+  const certImage = document.getElementById("certificateImage");
   const certificates = [
     "certificate(1).jpg",
     "certificate(2).jpg",
     "certificate(3).jpg"
   ];
-
-  const certImage = document.getElementById("certificateImage");
-  let currentIndex = 0;
 
   if (certImage) {
 
@@ -74,14 +74,16 @@ document.addEventListener("DOMContentLoaded", () => {
       img.src = src;
     });
 
-    setInterval(() => {
-      currentIndex = (currentIndex + 1) % certificates.length;
+    let index = 0;
 
-      certImage.style.opacity = 0;
+    setInterval(() => {
+      index = (index + 1) % certificates.length;
+
+      certImage.style.opacity = "0";
 
       setTimeout(() => {
-        certImage.src = certificates[currentIndex];
-        certImage.style.opacity = 1;
+        certImage.src = certificates[index];
+        certImage.style.opacity = "1";
       }, 400);
 
     }, 3000);
@@ -99,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  if (closeModal && modal) {
+  if (closeModal) {
     closeModal.addEventListener("click", () => {
       modal.style.display = "none";
     });
@@ -114,12 +116,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal && modal.style.display === "flex") {
+    if (e.key === "Escape" && modal?.style.display === "flex") {
       modal.style.display = "none";
     }
   });
 
-  // ===== PREMIUM COUNTER =====
+  // ===== COUNTER =====
   const counters = document.querySelectorAll(".counter");
 
   const counterObserver = new IntersectionObserver((entries, observer) => {
@@ -131,24 +133,20 @@ document.addEventListener("DOMContentLoaded", () => {
         const target = +counter.getAttribute("data-target");
         let current = 0;
         const duration = 1200;
-        const increment = target / (duration / 16);
+        const step = target / (duration / 16);
 
-        const updateCounter = () => {
-          current += increment;
+        const animate = () => {
+          current += step;
 
           if (current < target) {
             counter.innerText = Math.floor(current);
-            requestAnimationFrame(updateCounter);
+            requestAnimationFrame(animate);
           } else {
-            if (target === 40) {
-              counter.innerText = target + "%";
-            } else {
-              counter.innerText = target + "+";
-            }
+            counter.innerText = target === 40 ? target + "%" : target + "+";
           }
         };
 
-        updateCounter();
+        animate();
         observer.unobserve(counter);
       }
 
