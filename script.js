@@ -3,6 +3,31 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===== PAGE FADE-IN =====
   document.body.classList.add("page-loaded");
 
+
+  // ===== DARK MODE SYSTEM =====
+  const themeToggle = document.getElementById("theme-toggle");
+
+  // Load saved theme
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+    if (themeToggle) themeToggle.textContent = "☀️";
+  }
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+
+      if (document.body.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+        themeToggle.textContent = "☀️";
+      } else {
+        localStorage.setItem("theme", "light");
+        themeToggle.textContent = "🌙";
+      }
+    });
+  }
+
+
   // ===== SAFE INTERNAL PAGE TRANSITION =====
   document.querySelectorAll("a[href]").forEach(link => {
     const href = link.getAttribute("href");
@@ -24,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+
   // ===== HAMBURGER =====
   const menuToggle = document.getElementById("menu-toggle");
   const navLinks = document.getElementById("nav-links");
@@ -34,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+
   // ===== AUTO ACTIVE NAV =====
   const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
@@ -42,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
       link.classList.add("active");
     }
   });
+
 
   // ===== SCROLL REVEAL =====
   const revealElements = document.querySelectorAll(
@@ -58,6 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }, { threshold: 0.15 });
 
   revealElements.forEach(el => revealObserver.observe(el));
+
 
   // ===== CERTIFICATE SLIDER =====
   const certImage = document.getElementById("certificateImage");
@@ -88,6 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }, 3000);
   }
+
 
   // ===== MODAL =====
   const modal = document.getElementById("certificateModal");
@@ -120,6 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
       modal.style.display = "none";
     }
   });
+
 
   // ===== COUNTER =====
   const counters = document.querySelectorAll(".counter");
