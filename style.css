@@ -741,3 +741,12 @@ body.dark .contact-box h3 {
 body.dark .contact-box a {
   color: #60A5FA;
 }
+/* ===== FORCE DARK MODE CONTACT FIX ===== */
+
+body.dark .contact-box h3 {
+  color: #E2E8F0 !important;
+}
+
+body.dark .contact-box a {
+  color: #60A5FA !important;
+}
