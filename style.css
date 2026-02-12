@@ -531,3 +531,10 @@ footer {
 .certificate-heading {
   margin-top: 70px;
 }
+/* ================= SKILLS GRID ================= */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
