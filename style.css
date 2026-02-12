@@ -509,3 +509,25 @@ footer {
   background: rgba(0,0,0,0.6);
   transform: scale(1.1);
 }
+/* ================= EXPERIENCE PAGE POLISH ================= */
+
+.section-subtitle {
+  max-width: 650px;
+  margin-bottom: 50px;
+  color: #475569;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.experience-list {
+  margin-top: 15px;
+  padding-left: 20px;
+}
+
+.experience-list li {
+  margin-bottom: 8px;
+}
+
+.certificate-heading {
+  margin-top: 70px;
+}
