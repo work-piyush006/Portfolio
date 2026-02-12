@@ -732,3 +732,12 @@ body.dark footer {
   align-items: center;
   gap: 15px;
 }
+/* ===== DARK MODE FIX – CONTACT HEADINGS ===== */
+
+body.dark .contact-box h3 {
+  color: #E2E8F0;
+}
+
+body.dark .contact-box a {
+  color: #60A5FA;
+}
