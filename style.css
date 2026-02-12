@@ -683,3 +683,68 @@ body.dark footer {
 body.dark .stat-card {
   background: rgba(255,255,255,0.05);
 }
+/* ================= DARK MODE COMPLETE POLISH ================= */
+
+body.dark .nav a {
+  color: #E2E8F0;
+}
+
+body.dark .nav a:hover,
+body.dark .nav a.active {
+  color: #60A5FA;
+}
+
+body.dark .nav a::after {
+  background: #60A5FA;
+}
+
+/* Buttons */
+body.dark .primary-btn {
+  background: #3B82F6;
+}
+
+body.dark .primary-btn:hover {
+  background: #2563EB;
+  box-shadow: 0 10px 25px rgba(59,130,246,0.4);
+}
+
+body.dark .secondary-btn {
+  color: #60A5FA;
+  border: 2px solid #334155;
+}
+
+body.dark .secondary-btn:hover {
+  background: #3B82F6;
+  color: white;
+}
+
+/* Contact Boxes */
+body.dark .contact-box {
+  background: #1E293B;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+body.dark .contact-box a {
+  color: #60A5FA;
+}
+
+/* Hero Image Glow */
+body.dark .hero-image img {
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 25px 60px rgba(59,130,246,0.15);
+}
+
+/* Card Shadow Correction */
+body.dark .card:hover {
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* Stats Section refinement */
+body.dark .stats-section {
+  background: #020617;
+}
+
+/* Modal polish */
+body.dark .certificate-modal {
+  background: rgba(0,0,0,0.9);
+}
