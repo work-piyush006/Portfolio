@@ -818,3 +818,52 @@ body.dark .stat-card {
 body.dark .certificate-modal {
   background: rgba(0,0,0,0.9);
 }
+/* ===== COMPLETE DARK MODE FINISH ===== */
+
+/* Improve nav visibility */
+body.dark .nav a {
+  color: #CBD5E1;
+}
+
+body.dark .nav a:hover,
+body.dark .nav a.active {
+  color: #60A5FA;
+}
+
+/* Hero title gradient fix */
+body.dark .hero-content h1 {
+  background: linear-gradient(90deg, #E2E8F0, #60A5FA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Buttons tuned for dark */
+body.dark .primary-btn {
+  background: #3B82F6;
+}
+
+body.dark .primary-btn:hover {
+  background: #2563EB;
+  box-shadow: 0 10px 30px rgba(59,130,246,0.45);
+}
+
+body.dark .secondary-btn {
+  border: 2px solid #475569;
+  color: #60A5FA;
+}
+
+body.dark .secondary-btn:hover {
+  background: #3B82F6;
+  color: #fff;
+}
+
+/* Contact box dark depth */
+body.dark .contact-box {
+  background: #1E293B;
+  box-shadow: 0 15px 45px rgba(0,0,0,0.5);
+}
+
+/* Card hover stronger in dark */
+body.dark .card:hover {
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+}
