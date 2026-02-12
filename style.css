@@ -631,3 +631,55 @@ body.page-loaded {
   padding-top: 120px;
   padding-bottom: 120px;
 }
+/* ================= THEME TOGGLE ================= */
+
+.theme-toggle {
+  cursor: pointer;
+  font-size: 20px;
+  margin-right: 15px;
+  user-select: none;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.2);
+}
+
+/* ================= DARK MODE VARIABLES ================= */
+
+body.dark {
+  background: #0F172A;
+  color: #E2E8F0;
+}
+
+body.dark header {
+  background: rgba(15, 23, 42, 0.95);
+}
+
+body.dark .card {
+  background: #1E293B;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+body.dark .hero {
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 60%, #334155 100%);
+}
+
+body.dark .hero-content p,
+body.dark .section-subtitle,
+body.dark .contact-subtext {
+  color: #CBD5E1;
+}
+
+body.dark .hero-highlights span {
+  background: #1E293B;
+  color: #E2E8F0;
+}
+
+body.dark footer {
+  background: #020617;
+}
+
+body.dark .stat-card {
+  background: rgba(255,255,255,0.05);
+}
