@@ -539,16 +539,7 @@ footer {
   gap: 30px;
 }
 
-/* ================= PAGE FADE SYSTEM ================= */
 
-body {
-  opacity: 0;
-  transition: opacity 0.35s ease;
-}
-
-body.page-loaded {
-  opacity: 1;
-}
 
 /* ================= HERO TEXT DEPTH ================= */
 
