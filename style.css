@@ -620,15 +620,16 @@ footer {
 }
 /* ================= THEME TOGGLE ================= */
 
-.theme-toggle {
+#theme-toggle {
+  background: none;
+  border: none;
   cursor: pointer;
   font-size: 20px;
-  margin-right: 15px;
   user-select: none;
   transition: transform 0.3s ease;
 }
 
-.theme-toggle:hover {
+#theme-toggle:hover {
   transform: scale(1.2);
 }
 
@@ -724,4 +725,10 @@ body.dark .certificate-modal {
 /* Footer */
 body.dark footer {
   background: #020617;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
