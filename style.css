@@ -447,12 +447,12 @@ footer {
     padding: 35px;
   }
 }
-/* ================= CERTIFICATE MODAL FIX ================= */
+/* ================= CERTIFICATE SECTION ================= */
 
 .certificate-slider {
   width: 100%;
   max-width: 500px;
-  margin: 50px auto;
+  margin: 60px auto;
   text-align: center;
 }
 
@@ -468,7 +468,8 @@ footer {
   transform: scale(1.02);
 }
 
-/* Hidden by default */
+/* ================= MODAL ================= */
+
 .certificate-modal {
   display: none;
   position: fixed;
@@ -477,25 +478,34 @@ footer {
   justify-content: center;
   align-items: center;
   z-index: 2000;
+  padding: 20px;
 }
 
 .certificate-modal img {
-  max-width: 90%;
-  max-height: 85%;
-  border-radius: 16px;
+  max-width: 95%;
+  max-height: 90vh;
+  border-radius: 14px;
+  object-fit: contain;
 }
 
 .close-modal {
   position: absolute;
-  top: 25px;
-  right: 35px;
-  font-size: 36px;
+  top: 20px;
+  right: 20px;
+  font-size: 28px;
   color: white;
   cursor: pointer;
-  font-weight: 600;
+  background: rgba(0,0,0,0.3);
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: 0.3s ease;
 }
 
 .close-modal:hover {
-  transform: scale(1.2);
+  background: rgba(0,0,0,0.6);
+  transform: scale(1.1);
 }
