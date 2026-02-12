@@ -201,9 +201,7 @@ header {
 }
 
 /* ================= SECTIONS ================= */
-.page-section {
-  padding: 100px 0;
-}
+
 
 .page-section h1,
 .page-section h2 {
@@ -222,8 +220,8 @@ header {
 }
 
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  transform: translateY(-8px);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.12);
 }
 
 /* ================= PREMIUM STATS ================= */
@@ -561,9 +559,7 @@ footer {
   border: 1px solid rgba(15, 23, 42, 0.05);
 }
 
-.card:hover {
-  transform: translateY(-8px);
-}
+
 
 /* ================= BUTTON MICRO INTERACTION ================= */
 
